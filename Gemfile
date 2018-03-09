@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap', '~> 4.0.0'
-gem 'devise', '~> 4.4', '>= 4.4.1'
+gem 'devise', github: 'plataformatec/devise'
 gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'

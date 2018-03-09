@@ -17,6 +17,17 @@ GIT
     kaminari-core (1.1.1)
 
 GIT
+  remote: https://github.com/plataformatec/devise.git
+  revision: d545fe3e3f85938683cbe41b03af1d5cbea2151c
+  specs:
+    devise (4.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: 679fd508c9f41f41b6df62024d67bc2281953395
   branch: master
@@ -101,12 +112,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
-    devise (4.4.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
-      responders
-      warden (~> 1.2.3)
     draper (3.0.1)
       actionpack (~> 5.0)
       activemodel (~> 5.0)
@@ -281,7 +286,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  devise (~> 4.4, >= 4.4.1)
+  devise!
   draper (~> 3.0, >= 3.0.1)
   faker!
   haml-rails (~> 1.0)
