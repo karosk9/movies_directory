@@ -1,0 +1,2 @@
+class Screenwriter < ApplicationRecord
+end
