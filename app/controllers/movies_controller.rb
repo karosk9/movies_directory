@@ -23,6 +23,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def edit
+    # redirect_to movies_path if current_user != @movie.user
   end
 
   def update
@@ -35,17 +36,13 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
 
   def destroy
     @movie.destroy
-    redirect_to movies_path
+    redirect_to movies_path, notice: 'Movie was successfully deleted.'
   end
 
-	def add_movie_genre
-			@movie.movie_types.create
-			redirect_to new_movie_path(@article)
-	end
-
   private
+
   def movie_params
-    params.require(:movie).permit(:title, :description, :date_of_premiere, :movie_types, :country, :director, :screenwriter, :duration)
+    params.require(:movie).permit(:title, :description, :date_of_premiere, :movie_types, :country, :director, :duration)
   end
 
   def provide_movie
