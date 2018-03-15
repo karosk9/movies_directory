@@ -16,11 +16,14 @@
 	<% @movies.each do |movie| %>
 	<tr>
 		<td><%= movie.id %></td>
-    <td><%= movie.title %></td>
+    <td><%= movie.title.capitalize %></td>
 		<td><%= movie.date_of_premiere %></td>
-		<td><%= movie.country %></td>
-		<td><%= movie.movie_type %></td>
-		<td><%= link_to 'CHeck it out!', movie_path(movie), class: "btn btn-warning" %>
+		<td><%= movie.country.downcase unless movie.country.blank?%></td>
+		<td><% movie.movie_types.each do |movie|%>
+      <%= movie %>
+      <%end%>
+    </td>
+		<td><%= link_to 'Check it out!', movie_path(movie), class: "btn btn-warning" %>
 	</tr>
 	<% end %>
 </table>

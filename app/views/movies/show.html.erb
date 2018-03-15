@@ -1,24 +1,34 @@
+<%= link_to 'Back', movies_path, class: 'btn btn-primary' %>
 <table class= "table table-hover">
 	<tr>
-		<th>ID</th>
 		<th>title</th>
-		<th>date of premiere:</th>
-    <th>movie type:</th>
-    <th>director:</th>
-    <th>screenwriter:</th>
-    <th>duration:</th>
-    <th>country:</th>
-    <th>:</th>
-		<th colspan='2'></th>
-		</tr>
-	<% @movies.each do |movie| %>
+		<th>Premiere</th>
+		<th>country</th>
+    <th>movie type</th>
+    <th>director</th>
+    <th>duration</th>
 	<tr>
-		<td><%= movie.id %></td>
-    <td><%= movie.title %></td>
-		<td><%= movie.date_of_premiere %></td>
-		<td><%= movie.country %></td>
-		<td><%= link_to 'Show', article_path(movie), class: "btn btn-warning" %>
-		<%= render 'actions_permitions', model: article %>
+    <td><%= @movie.title.capitalize %></td>
+		<td><%= @movie.date_of_premiere %></td>
+		<td><%= @movie.country.downcase unless @movie.country.blank?%></td>
+		<td><% @movie.movie_types.each do |movie|%>
+			<%= movie %><br>
+			<%end%>
+		</td>
+		<td><%= @movie.director_id %></td>
+		<td><%= @movie.duration %></td>
+
+
 	</tr>
-	<% end %>
 </table>
+<p>
+	<strong>Movie genres</strong><br>
+	<% @movie.movie_types.each do |genre| %>
+			<%= genre %>
+	<% end %>
+</p>
+
+<p>
+		<strong>Description</strong><br>
+	<%= @movie.description %>
+</p>

@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-before_action :provide_movie, only: [:create, :show, :edit, :update, :destroy]
+before_action :provide_movie, only: [:show, :edit, :update, :destroy]
 before_action :movie_params, only: [:update]
 before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
@@ -38,9 +38,14 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     redirect_to movies_path
   end
 
+	def add_movie_genre
+			@movie.movie_types.create
+			redirect_to new_movie_path(@article)
+	end
+
   private
   def movie_params
-    params.require(:movie).permit_all_parameters
+    params.require(:movie).permit(:title, :description, :date_of_premiere, :movie_types, :country, :director, :screenwriter, :duration)
   end
 
   def provide_movie

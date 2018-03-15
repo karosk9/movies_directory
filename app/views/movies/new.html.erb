@@ -1,9 +1,36 @@
+<%=link_to 'Back', movies_path, class: 'btn btn-primary'%>
 <h2>Add Movie</h2>
 
 <%= form_for @movie, url: movies_path do |f| %>
-   <%= f.text_field :title, placeholder: 'Title' %>
-   <%= f.select :date_of_premiere, options_for_select(((Time.zone.now.year-100)..(Time.zone.now.year+1)).reverse_each, Time.zone.now.year)%><br>
-   
-   <%= f.text_area :description, placeholder: 'Movie description' %>
 
+  <div class="form-group">
+     <%= f.label :title, class: 'form-group'%><br>
+     <%= f.text_field :title, placeholder: 'Title' %>
+  </div>
+  <div class="form-group">
+     <%= f.label 'Premiere', class: 'form-group'%>
+     <%= f.select :date_of_premiere, options_for_select(((Time.zone.now.year-100)..(Time.zone.now.year+1)).reverse_each, Time.zone.now.year),  html: {selected: true}%><br>
+  </div>
+  <div class="form-group">
+     <%= f.label 'Country', class: 'form-group'%>
+     <%= f.text_field :country %>
+  </div>
+     <%= f.text_area :description, placeholder: 'Movie description' %>
+  <div class="form-group">
+     <%= f.label :movie_types, class: 'form-group'%><br>
+     <%= f.text_field :movie_types, placeholder: "Add movie genre" %>
+  </div>
+  <div class="form-group">
+     <%= f.label 'Director', class: 'form-group'%><br>
+     <%= f.text_field :director_id, placeholder: 'Peter Jackson' %>
+  </div>
+  <div class="form-group">
+     <%= f.label :duration, class: 'form-group'%><br>
+     <%= f.text_field :duration, placeholder: 'dutation in minutes' %>
+  </div>
+
+
+  <p>
+     <%= f.submit "Add movie!", class: "btn btn-success" %>
+   </p>
 <% end %>
