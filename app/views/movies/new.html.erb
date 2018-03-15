@@ -1,0 +1,9 @@
+<h2>Add Movie</h2>
+
+<%= form_for @movie, url: movies_path do |f| %>
+   <%= f.text_field :title, placeholder: 'Title' %>
+   <%= f.select :date_of_premiere, options_for_select(((Time.zone.now.year-100)..(Time.zone.now.year+1)).reverse_each, Time.zone.now.year)%><br>
+   
+   <%= f.text_area :description, placeholder: 'Movie description' %>
+
+<% end %>

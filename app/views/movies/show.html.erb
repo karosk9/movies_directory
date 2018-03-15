@@ -1,0 +1,24 @@
+<table class= "table table-hover">
+	<tr>
+		<th>ID</th>
+		<th>title</th>
+		<th>date of premiere:</th>
+    <th>movie type:</th>
+    <th>director:</th>
+    <th>screenwriter:</th>
+    <th>duration:</th>
+    <th>country:</th>
+    <th>:</th>
+		<th colspan='2'></th>
+		</tr>
+	<% @movies.each do |movie| %>
+	<tr>
+		<td><%= movie.id %></td>
+    <td><%= movie.title %></td>
+		<td><%= movie.date_of_premiere %></td>
+		<td><%= movie.country %></td>
+		<td><%= link_to 'Show', article_path(movie), class: "btn btn-warning" %>
+		<%= render 'actions_permitions', model: article %>
+	</tr>
+	<% end %>
+</table>
