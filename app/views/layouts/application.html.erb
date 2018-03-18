@@ -10,6 +10,20 @@
 
   <body class="container">
     <div class="jumbotron">
+      <% if user_signed_in? %>
+        <%= button_to('Logout',
+            destroy_user_session_path,
+            method: :delete,
+            class: 'btn btn-danger') %>
+        <%= current_user.email %><br>
+      <%else%>
+        <%=link_to('Log in', new_user_session_path, class: 'btn btn-primary')%>
+      <% end %>
+
+      <% flash.each do |type, message| %>
+      <div class='alert alert-warning' >
+        <%= message %>
+        <%end%>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

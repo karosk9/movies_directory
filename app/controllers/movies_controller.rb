@@ -11,19 +11,25 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def create
-    @movie = Movie.new(movie_params)
-    if @movie.save
-      redirect_to movies_path
+    if current_user.admin?
+      @movie = Movie.new(movie_params)
+      if @movie.save
+        redirect_to movies_path
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      redirect_to movies_path, notice: 'You have no permition to add the movie'
     end
   end
 
   def show
+    # binding.pry
+    @review = Review.new(reviewer: session[:reviewer])
   end
 
   def edit
-    # redirect_to movies_path if current_user != @movie.user
+    redirect_to movies_path unless current_user.admin?
   end
 
   def update
