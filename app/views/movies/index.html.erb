@@ -1,0 +1,29 @@
+<h2>My Movies - list</h2>
+
+<p>
+  <%= link_to 'Add movie', new_movie_path, class: "btn btn-primary"%>
+</p>
+
+<table class= "table table-hover">
+	<tr>
+		<th>ID</th>
+		<th>title</th>
+		<th>date of premiere</th>
+    <th>country</th>
+    <th>movie type</th>
+    <th>Go to</th>
+		</tr>
+	<% @movies.each do |movie| %>
+	<tr>
+		<td><%= movie.id %></td>
+    <td><%= movie.title.capitalize %></td>
+		<td><%= movie.date_of_premiere %></td>
+		<td><%= movie.country.downcase unless movie.country.blank?%></td>
+		<td><% movie.movie_types.each do |movie|%>
+      <%= movie %>
+      <%end%>
+    </td>
+		<td><%= link_to 'Check it out!', movie_path(movie), class: "btn btn-warning" %>
+	</tr>
+	<% end %>
+</table>

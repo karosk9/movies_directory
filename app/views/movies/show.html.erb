@@ -1,0 +1,40 @@
+<%= link_to 'Back', movies_path, class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_movie_path(@movie), class: 'btn btn-success' %>
+<%= link_to 'Delete', movie_path(@movie),
+			method: :delete,
+			data: {confirm: 'Are you sure'},
+			class: 'btn btn-danger' %>
+
+<table class= "table table-hover">
+	<tr>
+		<th>title</th>
+		<th>Premiere</th>
+		<th>country</th>
+    <th>movie type</th>
+    <th>director</th>
+    <th>duration</th>
+	<tr>
+    <td><%= @movie.title.capitalize %></td>
+		<td><%= @movie.date_of_premiere %></td>
+		<td><%= @movie.country.downcase unless @movie.country.blank?%></td>
+		<td><% @movie.movie_types.each do |movie|%>
+			<%= movie %><br>
+			<%end%>
+		</td>
+		<td><%= @movie.director %></td>
+		<td><%= @movie.duration %></td>
+
+
+	</tr>
+</table>
+<p>
+	<strong>Movie genres</strong><br>
+	<% @movie.movie_types.each do |genre| %>
+			<%= genre %>
+	<% end %>
+</p>
+
+<p>
+		<strong>Description</strong><br>
+	<%= @movie.description %>
+</p>
