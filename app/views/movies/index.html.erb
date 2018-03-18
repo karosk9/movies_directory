@@ -1,9 +1,5 @@
 <h2>My Movies - list</h2>
-
-<p>
-  <%= link_to 'Add movie', new_movie_path, class: "btn btn-primary"%>
-</p>
-
+<%=render 'admin/add' if current_user.try(:admin)%>
 <table class= "table table-hover">
 	<tr>
 		<th>ID</th>
