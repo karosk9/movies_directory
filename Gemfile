@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.4.1'
 gem 'devise', github: 'plataformatec/devise'
 gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'haml-rails', '~> 1.0'
